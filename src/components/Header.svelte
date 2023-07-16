@@ -18,9 +18,9 @@
         <a href="index.html" class="logo">Footnet</a>
 
         <ul class:active={active}>
-            <li><a href="#scores">Latest scores</a></li>
-            <li><a href="index.html">Compare Stats</a></li>
-            <li><a href="index.html">API</a></li>
+            <li><a href="#scores" on:click={handleClick}>Latest scores</a></li>
+            <li><a href="index.html" on:click={handleClick}>Compare Stats</a></li>
+            <li><a href="index.html" on:click={handleClick}>API</a></li>
         </ul>
     </nav>
 
