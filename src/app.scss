@@ -53,6 +53,7 @@ body{
 
   .home-team,.away-team{
     @include flex(row,center,center,1rem);
+    width: 100%;
 
     h3{
       color: #f2f2f2;
