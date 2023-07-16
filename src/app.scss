@@ -52,7 +52,7 @@ body{
 
 
   .home-team,.away-team{
-    @include flex(row,flex-start,flex-start,1rem);
+    @include flex(row,center,center,1rem);
     width: 100%;
 
     h3{
@@ -72,8 +72,13 @@ body{
     flex-direction: column;
     width: 80vw;
 
+    .home-team{
+      justify-content: flex-start;
+    }
+
     .away-team{
       flex-direction: row-reverse;
+      justify-content: flex-end;
     }
   }
 }
