@@ -8,7 +8,7 @@
         const options = {
 	        method: 'GET',
 	        headers: {
-		    'X-RapidAPI-Key': '137d625a5emsh8df72dccc573380p166623jsnc1aa2cf506a8',
+		    'X-RapidAPI-Key': '17ef089635msh308d7b3ccbd5643p17f528jsn3b1ae12b6853',
 		    'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
 	}
 };
@@ -31,15 +31,13 @@ fetch(url,options).then(response => response.json()).then(data => {
         <h1>
             Latest News:
         </h1>
+        
+        {#if newsHeadline === ""}
+        <div class="loader-text">Fetching latest news...</div>
 
-        <p>
-            {#if newsHeadline === ""}
-              Getting latest news...
-
-              {:else}
-              {newsHeadline}
-            {/if}
-        </p>
+        {:else}
+        <p>{newsHeadline}</p>
+      {/if}
 
         <a href="https://www.livescore.com/en/{linkUrl}">Read Article</a>
     </div>
@@ -58,36 +56,32 @@ fetch(url,options).then(response => response.json()).then(data => {
         padding: 5vw;
 
         .loader {
-            border: 15px solid #202020;
-            border-radius: 50%;
-            border-top: 15px solid #F1D302;
-            border-bottom: 15px solid #F1D302;
-            width: 200px;
-            height: 200px;
-            margin-right: 20%;
-            -webkit-animation: spin 2s linear infinite;
-            animation: spin 2s linear infinite;
+            height: 350px;
+            width: 500px;
+            border-radius: 7px;
+            animation: spin .9s ease-in-out infinite alternate;
 
             @-webkit-keyframes spin {
                 0% {
-                  -webkit-transform: rotate(0deg);
-                }
-                100% {
-                  -webkit-transform: rotate(360deg);
-                }
+                background-color: #625500;
+              }
+              100% {
+                background-color: #0e0e0e;
+              }
             }
             @keyframes spin {
               0% {
-                transform: rotate(0deg);
+                background-color: #625500;
               }
               100% {
-                transform: rotate(360deg);
+                background-color: #0e0e0e;
               }
             }
         }
 
         .left--main{
             @include flex(column,flex-start,flex-start,2rem);
+            
             h1{
                 color: #16C172;
                 font-size: 1rem;
@@ -104,6 +98,23 @@ fetch(url,options).then(response => response.json()).then(data => {
                 font-weight: bold;
                 background-color: #F1D302;
                 border-radius: 7px;
+            }
+
+            .loader-text{
+                color: #f2f2f2;
+                font-size: 2.5rem;
+                animation: blink .7s ease-in-out infinite alternate;
+
+
+                @keyframes blink{
+                    0%{
+                        color: #f2f2f2;
+                    }
+
+                    100%{
+                        color: #0e0e0e;
+                    }
+                }
             }
         }
 
@@ -136,8 +147,8 @@ fetch(url,options).then(response => response.json()).then(data => {
         main{
             padding-top: 4rem;
             .loader{
-                width: 100px;
-                height: 100px;
+                width: 90vw;
+                height: 250px;
             }
 
             .left--main{

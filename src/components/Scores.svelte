@@ -1,8 +1,8 @@
 
 
-<section>
+<section id="scores">
     <h2 class="heading">
-        Live scores
+        Matches (live)
     </h2>
 
     <div class="scores">
@@ -12,13 +12,13 @@
 
 <style lang="scss">
     section{
-        @include flex(column, center, center, 1rem);
-        margin-top: 5vw;
+        @include flex(column, center, center, .5rem);
+        margin-top: 5rem;
 
 
         .heading{
-            font-size: 1.25rem;
-            color: #F1D302;
+            font-size: 2.25rem;
+            color: #fff;
         }
 
         .scores{

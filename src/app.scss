@@ -13,15 +13,23 @@ body{
   min-height: 100vh;
 }
 
+body,html{
+  scroll-behavior: smooth;
+}
+
 .league{
   padding: 7px 15px;
-  color: #fff;
-  background-color: #FB4D3D;
+  color: #DE1A1A;
+  background-color: #141414;
   font-size: 10px;
+  border-radius: 7px;
+  font-weight: bold;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .scores-container{
-  border: solid 2px #F1D302;
+  border: solid 1px #535353;
   background-color: #141414;
   padding: 12px;
   border-radius: 10px;
@@ -50,6 +58,10 @@ body{
     width: 50px;
   }
 
+  h2{
+    color: #F1D302;
+    font-size: 1.75rem;
+  }
 
   .home-team,.away-team{
     @include flex(row,center,center,1rem);
@@ -59,26 +71,30 @@ body{
       color: #f2f2f2;
       font-size: 1rem;
     }
-
-    h2{
-      color: #F1D302;
-      font-size: 1.75rem;
-    }
   }
 }
 
 @media (max-width: 768px){
   .scores-container{
-    flex-direction: column;
-    width: 80vw;
+    width: 90vw;
 
     .home-team{
       justify-content: flex-start;
+      flex-direction: column;
     }
 
     .away-team{
-      flex-direction: row-reverse;
+      flex-direction: column-reverse;
       justify-content: flex-end;
+    }
+
+    .home-team,.away-team{
+      text-align: center;
+      gap: 1em;
+
+      h3{
+        font-size: .75rem;
+      }
     }
   }
 }

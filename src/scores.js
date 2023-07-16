@@ -11,6 +11,7 @@ window.addEventListener('load', () =>{
     };
 
     fetch(url, options).then(response => response.json()).then(data => {
+        console.log(data)
         let gameInfo = data.data
 
         gameInfo.forEach((/** @type {{ league: { name: any; slug: any; }; status_more: any; home_team: { logo: any; name: any; }; home_score: { current: any; }; away_score: { current: any; }; away_team: { name: any; logo: any; }; }} */ game) =>{
@@ -18,7 +19,7 @@ window.addEventListener('load', () =>{
                 <div class="league">${game.league.name}(${game.league.slug})</div>
                 <div class="scores-container">
                     <h4 class="time">
-                         ${game.status_more}
+                         ${game.status_more}*
                     </h4>
                     
                     <div class="home-team">
@@ -27,17 +28,17 @@ window.addEventListener('load', () =>{
                     <h3 class="team-name">
                         ${game.home_team.name}
                     </h3>
-
+                    </div>
                     <h2 class="team-score">
                         ${game.home_score.current}
                     </h2>
-                    </div>
+                    
 
-                    <div class="away-team">
                     <h2 class="team-score">
                     ${game.away_score.current}
                      </h2>
 
+                     <div class="away-team">
                     <h3 class="team-name">
                     ${game.away_team.name}
                     </h3>

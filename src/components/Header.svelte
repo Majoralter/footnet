@@ -1,26 +1,62 @@
 <script>
-    let viewPortWidth = 0
+    let viewPortWidth = 0,
+        active = false
 
     window.addEventListener('resize', () =>{
         viewPortWidth = window.innerWidth
     })
+
+    const handleClick = () =>{
+        active = !active
+
+        console.log(active)
+    }
 </script>
 
 <header>
     <nav>
         <a href="index.html" class="logo">Footnet</a>
 
-        <ul>
-            <li><a href="index.html">Latest scores</a></li>
+        <ul class:active={active}>
+            <li><a href="#scores">Latest scores</a></li>
             <li><a href="index.html">Compare Stats</a></li>
             <li><a href="index.html">API</a></li>
         </ul>
     </nav>
+
+    {#if viewPortWidth <= 600}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="menu" on:click={handleClick}>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    {/if}
 </header>
 
 <style lang="scss">
     header{
         padding: 3vw 5vw;
+        position: relative;
+
+        .menu{
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            top: 3vw;
+            right: 5vw;
+            display: flex;
+            flex-direction: column;
+            gap: .3em;
+
+            span{
+                width: 100%;
+                height: 3px;
+                background-color: #F1D302;
+            }
+        }
+
         nav{
             @include flex(row,center,space-between,0);
 
@@ -33,6 +69,11 @@
 
             ul{
                 @include flex(row,center,center,1rem);
+                transition: all .3s ease-in-out;
+
+               &.active{
+                        transform: translateX(0);
+                    }
 
                 a{
                     font-size: 1rem;
@@ -69,16 +110,17 @@
     @media (max-width: 600px){
         header{
             nav{
-                flex-wrap: wrap;
-                align-items: flex-start;
-                gap: 2rem;
-
                 ul{
-                    flex-wrap: wrap;
-                    height: fit-content;
-                    justify-content: flex-start;
+                    flex-direction: column;
+                    height: 15rem;
                     gap: 2rem;
-                    padding-top: .3rem;
+                    padding: 1rem;
+                    background-color: #000;
+                    border-radius: 7px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: translateX(100vw);
                 }
             }
         }
