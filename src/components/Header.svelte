@@ -24,7 +24,6 @@
         </ul>
     </nav>
 
-    {#if viewPortWidth <= 600}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div class="menu" on:click={handleClick}>
@@ -32,7 +31,6 @@
         <span></span>
         <span></span>
     </div>
-    {/if}
 </header>
 
 <style lang="scss">
@@ -49,6 +47,7 @@
             display: flex;
             flex-direction: column;
             gap: .3em;
+            display: none;
 
             span{
                 width: 100%;
@@ -110,6 +109,12 @@
     @media (max-width: 600px){
         header{
             padding: 5vw;
+            overflow-x: hidden;
+
+            .menu{
+                display: flex;
+            }
+
             nav{
                 ul{
                     flex-direction: column;
