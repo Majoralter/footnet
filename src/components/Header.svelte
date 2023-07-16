@@ -71,7 +71,7 @@
                 transition: all .3s ease-in-out;
 
                &.active{
-                        transform: translateX(0);
+                        transform: translateY(0);
                     }
 
                 a{
@@ -109,7 +109,6 @@
     @media (max-width: 600px){
         header{
             padding: 5vw;
-            overflow-x: hidden;
 
             .menu{
                 display: flex;
@@ -126,7 +125,7 @@
                     position: absolute;
                     top: 0;
                     right: 0;
-                    transform: translateX(100vw);
+                    transform: translateY(-100vh);
                 }
             }
         }
