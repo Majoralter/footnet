@@ -1,0 +1,8 @@
+/* Variables and mixins declared here will be available in all other SCSS files */
+@mixin flex($flex-direction,$align-items,$justify-content,$gap){
+    display: flex;
+    flex-direction: $flex-direction;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    gap: $gap;
+}
