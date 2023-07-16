@@ -44,7 +44,7 @@
             position: absolute;
             height: 30px;
             width: 30px;
-            top: 3vw;
+            top: 5vw;
             right: 5vw;
             display: flex;
             flex-direction: column;
@@ -109,6 +109,7 @@
 
     @media (max-width: 600px){
         header{
+            padding: 5vw;
             nav{
                 ul{
                     flex-direction: column;
