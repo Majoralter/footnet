@@ -1,11 +1,11 @@
-let container;
+let  container = "";
 
 window.addEventListener('load', () =>{
     const url = 'https://sportscore1.p.rapidapi.com/sports/1/events/live?page=1';
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '137d625a5emsh8df72dccc573380p166623jsnc1aa2cf506a8',
+            'X-RapidAPI-Key': '17ef089635msh308d7b3ccbd5643p17f528jsn3b1ae12b6853',
             'X-RapidAPI-Host': 'sportscore1.p.rapidapi.com'
         }
     };
@@ -30,12 +30,12 @@ window.addEventListener('load', () =>{
                     </h3>
                     </div>
                     <h2 class="team-score">
-                        ${game.home_score.current}
+                        ${game.home_score?.current ?? "TBD"}
                     </h2>
                     
 
                     <h2 class="team-score">
-                    ${game.away_score.current}
+                    ${game.away_score?.current ?? "TBD"}
                      </h2>
 
                      <div class="away-team">

@@ -14,14 +14,11 @@
 };
 
 fetch(url,options).then(response => response.json()).then(data => {
-    console.log(data)
-
     let randomIndex = Math.floor(Math.random() * 12)
 
     imagePath = data.homepageArticles[0].articles[`${randomIndex}`].mainMedia.gallery.url
     newsHeadline = data.homepageArticles[0].articles[`${randomIndex}`].title
     linkUrl = data.homepageArticles[0].articles[`${randomIndex}`].url
-    console.log(newsHeadline)
 }).catch(err => console.log(err))
 })
 </script>

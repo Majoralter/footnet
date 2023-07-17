@@ -19,8 +19,8 @@
 
         <ul class:active={active}>
             <li><a href="#scores" on:click={handleClick}>Latest scores</a></li>
-            <li><a href="index.html" on:click={handleClick}>Compare Stats</a></li>
-            <li><a href="index.html" on:click={handleClick}>API</a></li>
+            <li><a href="#player-stats" on:click={handleClick}>Check Stats</a></li>
+            <li><a href="https://rapidapi.com/apidojo/api/livescore6/" on:click={handleClick}>API</a></li>
         </ul>
     </nav>
 

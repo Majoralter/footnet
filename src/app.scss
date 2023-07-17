@@ -75,6 +75,27 @@ body,html{
   }
 }
 
+.player-stats{
+  @include flex(column, center, center, .5em);
+  text-align: center;
+
+  p{
+    font-size: 15px;
+    color: #16C172;
+  }
+
+  h3{
+    font-size: 1.75rem;
+    color: #f2f2f2;
+    padding: 12px 13px;
+    background-color: #141414;
+
+    span{
+      color: #F1D302;
+    }
+  }
+}
+
 @media (max-width: 768px){
   .scores-container{
     width: 90vw;
