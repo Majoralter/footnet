@@ -2,7 +2,6 @@ window.addEventListener('load', () =>{
        let searchBtn = document.querySelector('.search-btn')
        let totalGoals = 0,
        totalAssists = 0,
-       totalShots = 0,
        totalRedCards = 0,
        totalYellowCards = 0,
        totalMatches = 0,
@@ -22,6 +21,8 @@ window.addEventListener('load', () =>{
           'X-RapidAPI-Host': 'sportscore1.p.rapidapi.com'
       }
   }
+    // @ts-ignore
+    inputName.value = ""
 
         
 
@@ -71,6 +72,12 @@ window.addEventListener('load', () =>{
                         `
                     })
             })
+
+            totalGoals = 0
+            totalAssists = 0
+            totalMatches = 0
+            totalRedCards = 0
+            totalYellowCards = 0
         })
 })
 })
