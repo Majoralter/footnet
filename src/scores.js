@@ -12,23 +12,17 @@ window.addEventListener('load', () =>{
     };
 
     fetch(url, options).then(response => response.json()).then(data => {
-        console.log(data)
         let gameInfo = data.data
         let leagues = []
         gameInfo.forEach((info) => {
         if (!leagues.includes(info.league.name)){
         leagues.push(info.league.name)
         }})
-        console.log(leagues)
         
         let newData = leagues.map((league) => ({league, matches: []}))
 
-        console.log(newData)
-
         gameInfo.forEach((info) => {
             const leagueIndex = newData.findIndex((obj) => obj.league == info.league.name)
-
-            console.log(leagueIndex)
 
             const formerMatches = newData[leagueIndex]['matches']
 

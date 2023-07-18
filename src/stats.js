@@ -30,8 +30,6 @@ window.addEventListener('load', () =>{
             
     
             fetch(base,baseoptions).then(response => response.json()).then(data => {
-                console.log(data)
-    
                 let playerId = data.data[0].id
                 
                 document.querySelector('.player-name-display').textContent = data.data[0].name
