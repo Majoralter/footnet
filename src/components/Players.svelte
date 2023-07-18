@@ -16,10 +16,12 @@
     </form>
 
     <img src="" alt="" class="img">
+    <!-- svelte-ignore a11y-missing-content -->
+    <h3 class="player-name-display"></h3>
 
     <div class="player-stats">
         {#if isLoading}
-            <div class="loader"></div>
+            <div class="loader stats-loader"></div>
         {/if}
     </div>
 </section>
@@ -32,6 +34,10 @@
         h2{
             color: #f2f2f2;
             font-size: 2.25rem;
+        }
+
+        h3{
+            color: #f2f2f2;
         }
 
         img{

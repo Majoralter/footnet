@@ -1,3 +1,4 @@
+// @ts-nocheck
 let  container = "";
 
 window.addEventListener('load', () =>{
@@ -5,7 +6,7 @@ window.addEventListener('load', () =>{
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '17ef089635msh308d7b3ccbd5643p17f528jsn3b1ae12b6853',
+            'X-RapidAPI-Key': '301e85f9b2msh2716c2dd45a2964p17fb6bjsn77621ad69bff',
             'X-RapidAPI-Host': 'sportscore1.p.rapidapi.com'
         }
     };
@@ -13,42 +14,71 @@ window.addEventListener('load', () =>{
     fetch(url, options).then(response => response.json()).then(data => {
         console.log(data)
         let gameInfo = data.data
+        let leagues = []
+        gameInfo.forEach((info) => {
+        if (!leagues.includes(info.league.name)){
+        leagues.push(info.league.name)
+        }})
+        console.log(leagues)
+        
+        let newData = leagues.map((league) => ({league, matches: []}))
 
-        gameInfo.forEach((/** @type {{ league: { name: any; slug: any; }; status_more: any; home_team: { logo: any; name: any; }; home_score: { current: any; }; away_score: { current: any; }; away_team: { name: any; logo: any; }; }} */ game) =>{
-             container += `
-                <div class="league">${game.league.name}(${game.league.slug})</div>
-                <div class="scores-container">
-                    <h4 class="time">
-                         ${game.status_more}*
-                    </h4>
-                    
+        console.log(newData)
+
+        gameInfo.forEach((info) => {
+            const leagueIndex = newData.findIndex((obj) => obj.league == info.league.name)
+
+            console.log(leagueIndex)
+
+            const formerMatches = newData[leagueIndex]['matches']
+
+            // @ts-ignore
+            newData[leagueIndex] = {league: newData[leagueIndex]['league'], matches: [...formerMatches, {home_team: info.home_team.name, away_team: info.away_team.name, home_team_logo: info.home_team.logo, away_team_logo: info.away_team.logo, time: info.status_more, home_team_score: info.home_score?.current ?? "TBD", away_team_score: info.away_score?.current ?? "TBD"}]}
+        })
+
+
+                    for(let i = 0; i < newData.length; i++){
+                    for(let j = 0; j < newData[i].matches.length; j++){
+                    container += `
+                    <div class="league">${(!container.includes(newData[i].league)) ? newData[i].league : ""}</div>
+                    <div class="scores-container">
                     <div class="home-team">
-                    <img src=${game.home_team.logo}>
-
+                    <img src=${newData[i].matches[j].home_team_logo}>
+    
                     <h3 class="team-name">
-                        ${game.home_team.name}
+                        ${newData[i].matches[j].home_team}
                     </h3>
                     </div>
+    
+    
+                    <div class="game-details">
+                    <h4 class="time">
+                         ${newData[i].matches[j].time}*
+                    </h4>
+    
+                    <div>
                     <h2 class="team-score">
-                        ${game.home_score?.current ?? "TBD"}
+                        ${newData[i].matches[j].home_team_score}
                     </h2>
-                    
-
+    
                     <h2 class="team-score">
-                    ${game.away_score?.current ?? "TBD"}
+                    ${newData[i].matches[j].away_team_score}
                      </h2>
-
+                     </div>
+                     </div>
+    
                      <div class="away-team">
                     <h3 class="team-name">
-                    ${game.away_team.name}
+                    ${newData[i].matches[j].away_team}
                     </h3>
-
-                    <img src=${game.away_team.logo}>
+    
+                    <img src=${newData[i].matches[j].away_team_logo}>
                     </div>
                 </div>
-             `
+                `
+                }}
 
-             document.querySelector('.scores').innerHTML = container
-        })         
+            document.querySelector('.scores').innerHTML = container    
     }).catch(err => console.log(err))
 })
+

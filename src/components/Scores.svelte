@@ -1,6 +1,6 @@
 <section id="scores">
     <h2 class="heading">
-        Matches
+        Matches<sup>Live</sup>
     </h2>
 
     <div class="scores">
@@ -19,10 +19,9 @@
             font-size: 2.25rem;
             color: #fff;
 
-            &::after{
-                content: "[Live]";
-                font-size: 1rem;
+            sup{
                 color: #16C172;
+                font-size: .5em;
             }
         }
 
